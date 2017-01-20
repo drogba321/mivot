@@ -1,0 +1,7 @@
+#!/opt/meituan/node-v5.10.1-linux-x64/bin/node
+
+var path = require('path');
+var fs   = require('fs');
+var lib = path.join(path.dirname(fs.realpathSync(__filename)), '../build/server/www.js');
+
+require(lib);

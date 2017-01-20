@@ -1,0 +1,26 @@
+# This is am example configuration file for Pivot, here you can add data sources as well as configure Pivot settings
+# You can start by using this sample config by running `cp config_sample.yaml config.yaml`
+
+# The port on which the Pivot server will listen on
+port: 9090
+
+# Run in verbose mode and print the queries sent to the server
+#verbose: true
+
+# A Druid broker node that can serve data (only used if you have Druid based data source)
+#druidHost: localhost:8082
+
+# A timeout for the Druid queries in ms (default: 30000 = 30 seconds)
+timeout: 30000
+
+#sourceListRefreshOnLoad: true
+#sourceListRefreshInterval: 0 #10000
+
+#headerBackground: '#ffc000'
+#hideGitHubIcon: true
+
+# The data sources that you have configured, these will appear, in order, inside the navigation menu of Pivot
+# In general there can be two types of 'engine':
+#   - native: a JSON file that is crunched within plywood itself (useful for small datasets and testing)
+#   - druid: a Druid dataSource
+dataSources: []

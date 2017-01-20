@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for models/filter/filter.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">models/filter/</a> filter.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">51.31% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>98/191</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">26.56% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>17/64</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">39.22% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>20/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">51.37% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>94/183</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">105×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">119×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-yes">47×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">93×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">110×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">102×</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">102×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">54×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">35×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">28×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var immutable_1 = require('immutable');
+var immutable_class_1 = require('immutable-class');
+var plywood_1 = require('plywood');
+var general_1 = require('../../utils/general/general');
+var dimension_1 = require('../dimension/dimension');
+var filter_clause_1 = require('../filter-clause/filter-clause');
+<span class="fstat-no" title="function not covered" >function withholdClause(clauses, clause, allowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >    return clauses.filter(<span class="fstat-no" title="function not covered" >function (c, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return i === allowIndex || !c.equals(clause);</span>
+    });
+}
+<span class="fstat-no" title="function not covered" >function swapClause(clauses, clause, other, allowIndex) {</span>
+<span class="cstat-no" title="statement not covered" >    return clauses.map(<span class="fstat-no" title="function not covered" >function (c, i) {</span></span>
+<span class="cstat-no" title="statement not covered" >        return (i === allowIndex || !c.equals(clause)) ? c : other;</span>
+    });
+}
+var check;
+var Filter = (function () {
+    function Filter(parameters) {
+        this.clauses = parameters;
+    }
+    Filter.isFilter = function (candidate) {
+        return immutable_class_1.isInstanceOf(candidate, Filter);
+    };
+    Filter.fromClause = <span class="fstat-no" title="function not covered" >function (clause) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!clause)</span>
+<span class="cstat-no" title="statement not covered" >            throw new Error('must have clause');</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(immutable_1.List([clause]));</span>
+    };
+    Filter.fromJS = function (parameters) {
+        var expression = plywood_1.Expression.fromJSLoose(parameters);
+        var clauses = null;
+        if (expression.equals(plywood_1.Expression.TRUE)) {
+            clauses = [];
+        }
+        else {
+            clauses = (expression.getExpressionPattern('and') || [expression]).map(function (c) { return filter_clause_1.FilterClause.fromExpression(c); });
+        }
+        return new Filter(immutable_1.List(clauses));
+    };
+    Filter.prototype.valueOf = function () {
+        return this.clauses;
+    };
+    Filter.prototype.toJS = function () {
+        return this.toExpression().toJS();
+    };
+    Filter.prototype.toJSON = function () {
+        return this.toJS();
+    };
+    Filter.prototype.toString = function () {
+        return this.clauses.map(function (clause) { return clause.toString(); }).join(' and ');
+    };
+    Filter.prototype.equals = function (other) {
+        return Filter.isFilter(other) &amp;&amp;
+            general_1.listsEqual(this.clauses, other.clauses);
+    };
+    Filter.prototype.replaceByIndex = <span class="fstat-no" title="function not covered" >function (index, replace) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        if (clauses.size === index)</span>
+<span class="cstat-no" title="statement not covered" >            return this.insertByIndex(index, replace);</span>
+<span class="cstat-no" title="statement not covered" >        var replacedClause = clauses.get(index);</span>
+<span class="cstat-no" title="statement not covered" >        clauses = clauses.map(<span class="fstat-no" title="function not covered" >function (c, i) {</span> <span class="cstat-no" title="statement not covered" >return i === index ? replace : c; </span>});</span>
+<span class="cstat-no" title="statement not covered" >        clauses = swapClause(clauses, replace, replacedClause, index);</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(clauses);</span>
+    };
+    Filter.prototype.insertByIndex = <span class="fstat-no" title="function not covered" >function (index, insert) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        clauses = clauses.splice(index, 0, insert);</span>
+<span class="cstat-no" title="statement not covered" >        clauses = withholdClause(clauses, insert, index);</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(clauses);</span>
+    };
+    Filter.prototype.empty = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.clauses.size === 0;</span>
+    };
+    Filter.prototype.single = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.clauses.size === 1;</span>
+    };
+    Filter.prototype.length = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.clauses.size;</span>
+    };
+    Filter.prototype.toExpression = function () {
+        var clauses = this.clauses.toArray().map(function (clause) {
+            return clause.toExpression();
+        });
+        switch (clauses.length) {
+            case 0:
+                return plywood_1.Expression.TRUE;
+            case 1:
+                return clauses[0];
+            default:
+                return plywood_1.Expression.and(clauses);
+        }
+    };
+    Filter.prototype.isRelative = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.clauses.some(<span class="fstat-no" title="function not covered" >function (clause) {</span> <span class="cstat-no" title="statement not covered" >return clause.relative; </span>});</span>
+    };
+    Filter.prototype.getSpecificFilter = <span class="fstat-no" title="function not covered" >function (now, maxTime, timezone) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.isRelative())</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(this.clauses.map(<span class="fstat-no" title="function not covered" >function (c) {</span> <span class="cstat-no" title="statement not covered" >return c.evaluate(now, maxTime, timezone); </span>}));</span>
+    };
+    Filter.prototype.indexOfClause = function (attribute) {
+        return this.clauses.findIndex(function (clause) { return clause.expression.equals(attribute); });
+    };
+    Filter.prototype.clauseForExpression = <span class="fstat-no" title="function not covered" >function (attribute) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.clauses.find(<span class="fstat-no" title="function not covered" >function (clause) {</span> <span class="cstat-no" title="statement not covered" >return clause.expression.equals(attribute); </span>});</span>
+    };
+    Filter.prototype.filteredOn = <span class="fstat-no" title="function not covered" >function (attribute) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.indexOfClause(attribute) !== -1;</span>
+    };
+    Filter.prototype.filteredOnValue = <span class="fstat-no" title="function not covered" >function (attribute, value) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        var index = this.indexOfClause(attribute);</span>
+<span class="cstat-no" title="statement not covered" >        if (index === -1)</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+<span class="cstat-no" title="statement not covered" >        return clauses.get(index).getLiteralSet().contains(value);</span>
+    };
+    Filter.prototype.addValue = function (attribute, value) {
+        var clauses = this.clauses;
+        var index = this.indexOfClause(attribute);
+        if (index === -1) {
+            return new Filter(clauses.concat(new filter_clause_1.FilterClause({
+                expression: attribute,
+                selection: plywood_1.r(plywood_1.Set.fromJS([value]))
+            })));
+        }
+        else {
+            var clause = clauses.get(index);
+            var newSet = clause.getLiteralSet().add(value);
+            return new Filter(clauses.splice(index, 1, clause.changeSelection(plywood_1.r(newSet))));
+        }
+    };
+    Filter.prototype.remove = <span class="fstat-no" title="function not covered" >function (attribute) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        var index = this.indexOfClause(attribute);</span>
+<span class="cstat-no" title="statement not covered" >        if (index === -1)</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(clauses.delete(index));</span>
+    };
+    Filter.prototype.removeValue = <span class="fstat-no" title="function not covered" >function (attribute, value) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        var index = this.indexOfClause(attribute);</span>
+<span class="cstat-no" title="statement not covered" >        if (index === -1)</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+<span class="cstat-no" title="statement not covered" >        var clause = clauses.get(index);</span>
+<span class="cstat-no" title="statement not covered" >        var newSet = clause.getLiteralSet().remove(value);</span>
+<span class="cstat-no" title="statement not covered" >        if (newSet.empty()) {</span>
+<span class="cstat-no" title="statement not covered" >            return new Filter(clauses.delete(index));</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            clauses = clauses.splice(index, 1, clause.changeSelection(plywood_1.r(newSet)));</span>
+<span class="cstat-no" title="statement not covered" >            return new Filter(clauses);</span>
+        }
+    };
+    Filter.prototype.toggleValue = <span class="fstat-no" title="function not covered" >function (attribute, value) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.filteredOnValue(attribute, value) ? this.removeValue(attribute, value) : this.addValue(attribute, value);</span>
+    };
+    Filter.prototype.getSelection = function (attribute) {
+        var clauses = this.clauses;
+        var index = this.indexOfClause(attribute);
+        if (index === -1)
+            return null;
+        return clauses.get(index).selection;
+    };
+    Filter.prototype.setSelection = function (attribute, selection) {
+        var clauses = this.clauses;
+        var index = this.indexOfClause(attribute);
+        var newClause = new filter_clause_1.FilterClause({
+            expression: attribute,
+            selection: selection
+        });
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (index === -1) {
+            clauses = clauses.push(newClause);
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            clauses = clauses.splice(index, 1, newClause);</span>
+        }
+        return new Filter(clauses);
+    };
+    Filter.prototype.getTimeRange = <span class="fstat-no" title="function not covered" >function (attribute) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        var index = this.indexOfClause(attribute);</span>
+<span class="cstat-no" title="statement not covered" >        if (index === -1)</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+<span class="cstat-no" title="statement not covered" >        return clauses.get(index).getTimeRange();</span>
+    };
+    Filter.prototype.getLiteralSet = <span class="fstat-no" title="function not covered" >function (attribute) {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        var index = this.indexOfClause(attribute);</span>
+<span class="cstat-no" title="statement not covered" >        if (index === -1)</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+<span class="cstat-no" title="statement not covered" >        return clauses.get(index).getLiteralSet();</span>
+    };
+    Filter.prototype.setClause = <span class="fstat-no" title="function not covered" >function (expression) {</span>
+<span class="cstat-no" title="statement not covered" >        var expressionAttribute = expression.expression;</span>
+<span class="cstat-no" title="statement not covered" >        var added = false;</span>
+<span class="cstat-no" title="statement not covered" >        var newOperands = this.clauses.map(<span class="fstat-no" title="function not covered" >function (clause) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (clause.expression.equals(expressionAttribute)) {</span>
+<span class="cstat-no" title="statement not covered" >                added = true;</span>
+<span class="cstat-no" title="statement not covered" >                return expression;</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                return clause;</span>
+            }
+        });
+<span class="cstat-no" title="statement not covered" >        if (!added) {</span>
+<span class="cstat-no" title="statement not covered" >            newOperands = newOperands.push(expression);</span>
+        }
+<span class="cstat-no" title="statement not covered" >        return new Filter(newOperands);</span>
+    };
+    Filter.prototype.applyDelta = <span class="fstat-no" title="function not covered" >function (delta) {</span>
+<span class="cstat-no" title="statement not covered" >        var newFilter = this;</span>
+<span class="cstat-no" title="statement not covered" >        var deltaClauses = delta.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        deltaClauses.forEach(<span class="fstat-no" title="function not covered" >function (deltaClause) {</span></span>
+<span class="cstat-no" title="statement not covered" >            newFilter = newFilter.setClause(deltaClause);</span>
+        });
+<span class="cstat-no" title="statement not covered" >        return newFilter;</span>
+    };
+    Filter.prototype.getSingleClauseSet = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var clauses = this.clauses;</span>
+<span class="cstat-no" title="statement not covered" >        if (clauses.size !== 1)</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+<span class="cstat-no" title="statement not covered" >        return clauses.get(0).getLiteralSet();</span>
+    };
+    Filter.prototype.constrainToDimensions = function (dimensions, timeAttribute, oldTimeAttribute) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (oldTimeAttribute === void 0) { oldTimeAttribute = null; }
+        var hasChanged = false;
+        var clauses = [];
+        this.clauses.forEach(function (clause) {
+            var clauseExpression = clause.expression;
+            <span class="missing-if-branch" title="else path not taken" >E</span>if (dimension_1.Dimension.getDimensionByExpression(dimensions, clauseExpression)) {
+                clauses.push(clause);
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                hasChanged = true;</span>
+                // Special handling for time filter
+<span class="cstat-no" title="statement not covered" >                if (timeAttribute &amp;&amp; oldTimeAttribute &amp;&amp; oldTimeAttribute.equals(clauseExpression)) {</span>
+<span class="cstat-no" title="statement not covered" >                    clauses.push(new filter_clause_1.FilterClause({</span>
+                        expression: timeAttribute,
+                        selection: clause.selection
+                    }));
+                }
+            }
+        });
+        return hasChanged ? <span class="branch-0 cbranch-no" title="branch not covered" >new Filter(immutable_1.List(clauses)) </span>: this;
+    };
+    Filter.prototype.overQuery = <span class="fstat-no" title="function not covered" >function (duration, timezone, timeAttribute) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!timeAttribute)</span>
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+<span class="cstat-no" title="statement not covered" >        return new Filter(this.clauses.map(<span class="fstat-no" title="function not covered" >function (clause) {</span></span>
+<span class="cstat-no" title="statement not covered" >            if (clause.expression.equals(timeAttribute)) {</span>
+<span class="cstat-no" title="statement not covered" >                var timeRange = clause.getTimeRange();</span>
+<span class="cstat-no" title="statement not covered" >                var newTimeRange = new plywood_1.TimeRange({</span>
+                    start: duration.move(timeRange.start, timezone, -1),
+                    end: duration.move(timeRange.end, timezone, 1)
+                });
+<span class="cstat-no" title="statement not covered" >                return clause.changeSelection(plywood_1.r(newTimeRange));</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                return clause;</span>
+            }
+        }));
+    };
+    return Filter;
+}());
+exports.Filter = Filter;
+check = Filter;
+Filter.EMPTY = new Filter(immutable_1.List());
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 08 2016 17:01:59 GMT-0800 (PST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

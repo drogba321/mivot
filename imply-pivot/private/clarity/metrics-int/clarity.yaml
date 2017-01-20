@@ -1,0 +1,656 @@
+port: 8089
+
+druidHost: localhost:8082 # 172.31.14.252:8082
+
+sourceListScan: disable
+
+auth: auth.js
+
+customization:
+  title: 'Clarity (%v)'
+  headerBackground: '#208b84'
+  customLogoSvg: >
+    <svg width="211px" height="60px" viewBox="0 0 211 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+      <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(5, 1)">
+          <path d="M87.5025673,18.8160924 C84.9937824,18.8160924 83.0208841,19.7029534 81.5838132,21.476702 C80.1467423,23.2504506 79.4282176,25.69843 79.4282176,28.8207136 C79.4282176,32.0887847 80.1193409,34.5610617 81.5016083,36.2376186 C82.8838757,37.9141755 84.8841753,38.7524414 87.5025673,38.7524414 C88.635174,38.7524414 89.7312286,38.6400652 90.7907639,38.4153094 C91.8502993,38.1905535 92.9524431,37.90202 94.0972284,37.5497001 L94.0972284,41.2854876 C92.0025148,42.0751702 89.6277299,42.4700056 86.9728022,42.4700056 C83.0634822,42.4700056 80.0615104,41.2885366 77.9667969,38.9255633 C75.8720833,36.5625899 74.8247423,33.1821916 74.8247423,28.7842669 C74.8247423,26.0143033 75.3331898,23.5906214 76.3501002,21.5131487 C77.3670105,19.435676 78.8375504,17.8441857 80.7617641,16.73863 C82.6859777,15.6330744 84.945068,15.0803048 87.5391028,15.0803048 C90.2671018,15.0803048 92.7880274,15.6512975 95.1019551,16.7933001 L93.5309278,20.4197475 C92.6297139,19.9945338 91.6767553,19.6209588 90.6720235,19.2990112 C89.6672917,18.9770637 88.6108169,18.8160924 87.5025673,18.8160924 L87.5025673,18.8160924 Z M103.687802,42.1055385 L99.3948786,42.1055385 L99.3948786,13.75 L103.687802,13.75 L103.687802,42.1055385 Z M122.467059,42.1055385 L121.608474,39.299142 L121.462332,39.299142 C120.488047,40.5261873 119.507687,41.361416 118.521223,41.8048532 C117.534759,42.2482903 116.268207,42.4700056 114.721529,42.4700056 C112.736422,42.4700056 111.186723,41.9354592 110.072384,40.8663504 C108.958045,39.7972417 108.400884,38.2847184 108.400884,36.3287354 C108.400884,34.2512626 109.174211,32.6840699 110.720889,31.6271101 C112.267567,30.5701503 114.624085,29.9930832 117.790512,29.8958915 L121.279654,29.7865513 L121.279654,28.7113735 C121.279654,27.4235834 120.978239,26.4607925 120.3754,25.8229719 C119.772561,25.1851513 118.83787,24.8662458 117.571299,24.8662458 C116.536121,24.8662458 115.543583,25.0181056 114.593654,25.3218297 C113.643726,25.6255537 112.730347,25.9839428 111.85349,26.3970075 L110.465141,23.3354841 C111.561212,22.7644828 112.760783,22.3301639 114.063889,22.0325143 C115.366996,21.7348647 116.597013,21.5860421 117.753977,21.5860421 C120.323654,21.5860421 122.263062,22.1448861 123.572258,23.2625907 C124.881454,24.3802953 125.536042,26.1357942 125.536042,28.5291399 L125.536042,42.1055385 L122.467059,42.1055385 Z M116.073343,39.1898019 C117.632199,39.1898019 118.883528,38.755483 119.827367,37.8868321 C120.771206,37.0181812 121.243119,35.8002659 121.243119,34.2330497 L121.243119,32.4836077 L118.649097,32.5929478 C116.627455,32.6658416 115.156915,33.0029703 114.237433,33.604344 C113.317951,34.2057176 112.858217,35.1259878 112.858217,36.3651821 C112.858217,37.2642053 113.126142,37.9597231 113.661999,38.4517561 C114.197856,38.9437891 115.001629,39.1898019 116.073343,39.1898019 L116.073343,39.1898019 Z M141.77608,21.5860421 C142.640759,21.5860421 143.353194,21.646786 143.913408,21.7682757 L143.49325,25.7591902 C142.884321,25.6134026 142.251045,25.5405099 141.593403,25.5405099 C139.876225,25.5405099 138.484844,26.0993538 137.41922,27.2170585 C136.353595,28.3347631 135.820791,29.7865424 135.820791,31.57244 L135.820791,42.1055385 L131.527867,42.1055385 L131.527867,21.9505092 L134.889135,21.9505092 L135.455436,25.5040632 L135.674649,25.5040632 C136.34447,24.3013158 137.218269,23.3476365 138.296072,22.6429967 C139.373875,21.9383568 140.533866,21.5860421 141.77608,21.5860421 L141.77608,21.5860421 Z M151.951222,42.1055385 L147.658299,42.1055385 L147.658299,21.9505092 L151.951222,21.9505092 L151.951222,42.1055385 Z M147.40255,16.6110665 C147.40255,15.8456819 147.612627,15.256466 148.032788,14.8434012 C148.452948,14.4303365 149.052734,14.2238072 149.832162,14.2238072 C150.587233,14.2238072 151.17484,14.4303365 151.595001,14.8434012 C152.015161,15.256466 152.225239,15.8456819 152.225239,16.6110665 C152.225239,17.3400043 152.015161,17.9140342 151.595001,18.3331735 C151.17484,18.7523127 150.587233,18.9618792 149.832162,18.9618792 C149.052734,18.9618792 148.452948,18.7523127 148.032788,18.3331735 C147.612627,17.9140342 147.40255,17.3400043 147.40255,16.6110665 L147.40255,16.6110665 Z M165.615506,39.0075684 C166.662863,39.0075684 167.710204,38.8435598 168.757561,38.5155378 L168.757561,41.7410714 C168.282597,41.9476038 167.670633,42.1207239 166.921651,42.260437 C166.172669,42.4001501 165.396297,42.4700056 164.592512,42.4700056 C160.52487,42.4700056 158.49108,40.3318201 158.49108,36.055385 L158.49108,25.1942662 L155.732648,25.1942662 L155.732648,23.2990374 L158.692025,21.731829 L160.153446,17.4675642 L162.802271,17.4675642 L162.802271,21.9505092 L168.556615,21.9505092 L168.556615,25.1942662 L162.802271,25.1942662 L162.802271,35.9824916 C162.802271,37.0151535 163.061062,37.7774895 163.578651,38.2695225 C164.09624,38.7615555 164.775185,39.0075684 165.615506,39.0075684 L165.615506,39.0075684 Z M169.725752,21.9505092 L174.402298,21.9505092 L178.512544,33.376552 C179.133651,35.0045131 179.547716,36.5352595 179.754752,37.9688372 L179.900894,37.9688372 C180.010501,37.3006442 180.211444,36.4897131 180.50373,35.5360195 C180.796016,34.5823258 182.342671,30.0538677 185.143741,21.9505092 L189.783752,21.9505092 L181.143102,44.7843715 C179.572066,48.9757638 176.953714,51.0714286 173.287965,51.0714286 C172.338037,51.0714286 171.41248,50.9681639 170.511266,50.7616316 L170.511266,47.3720878 C171.15673,47.5178753 171.893522,47.590768 172.721665,47.590768 C174.792021,47.590768 176.247338,46.3941131 177.087659,44.0007673 L177.836637,42.1055385 L169.725752,21.9505092 Z" id="Clarity" fill="#777777" sketch:type="MSShapeGroup"></path>
+          <path d="M18.3780069,46.3874418 L18.3780069,23.3333333 L13.3658232,23.3333333 L13.3658232,42.9878526 C14.8555478,44.3479329 16.5421346,45.4969497 18.3780069,46.3874418 L18.3780069,46.3874418 Z M25.0609185,48.3422454 L25.0609185,18.3333333 L20.0487348,18.3333333 L20.0487348,47.1099576 C21.6360463,47.7159291 23.3157325,48.1356282 25.0609185,48.3422454 L25.0609185,48.3422454 Z M31.7438301,48.0760342 L31.7438301,28.3333333 L26.7316464,28.3333333 L26.7316464,48.4733435 C27.0087586,48.4841365 27.2872468,48.4895833 27.5670103,48.4895833 C28.9970919,48.4895833 30.3938509,48.3472588 31.7438301,48.0760342 L31.7438301,48.0760342 Z M38.4267416,45.4814559 L38.4267416,26.6666667 L33.414558,26.6666667 L33.414558,47.6683664 C35.1934477,47.1560155 36.8754509,46.4157985 38.4267499,45.4814509 L38.4267416,45.4814559 Z M45.1096532,39.0934566 L45.1096532,30 L40.0974695,30 L40.0974695,44.3632159 C42.0581144,42.9110189 43.7567299,41.1266127 45.1096532,39.0934566 L45.1096532,39.0934566 Z M27.5670103,55 C42.7918497,55 55.1340206,42.6878306 55.1340206,27.5 C55.1340206,12.3121694 42.7918497,0 27.5670103,0 C12.3421709,0 0,12.3121694 0,27.5 C0,42.6878306 12.3421709,55 27.5670103,55 Z M27.5670103,51.6666667 C40.9464146,51.6666667 51.7925648,40.8468815 51.7925648,27.5 C51.7925648,14.1531185 40.9464146,3.33333333 27.5670103,3.33333333 C14.187606,3.33333333 3.3414558,14.1531185 3.3414558,27.5 C3.3414558,40.8468815 14.187606,51.6666667 27.5670103,51.6666667 Z" id="Rectangle-1" fill="#888888" sketch:type="MSShapeGroup"></path>
+        </g>
+      </g>
+    </svg>
+
+
+# ----------------------------------------------------
+
+_dataSourceCommon: &dataSourceCommon
+  engine: druid
+  source: metrics-int
+  timeAttribute: time
+  #refreshRule: { "rule": "realtime" }
+  refreshRule: { "rule": "fixed", time: "2016-04-25T03:00:00Z" } # This is a temp hack while Gian fixes tranquility
+  introspection: no-autofill
+  rollup: true
+
+  derivedAttributes:
+    cluster: '$service:STRING.extract("^([^:]+):")'
+    nodeType: '$service:STRING.extract(":([^:]+)$")'
+
+  derivedAttributes__tube_mogul__:
+    cluster: '$host:STRING.extract("^([^-]+)-")'
+    nodeType: '$service:STRING'
+
+
+_longFormCommon: &longFormCommon
+  metricColumn: metric
+  addSubsetFilter: true
+  possibleAggregates:
+    cnt: $filtered.count()
+    sum: $filtered.sum($sum)
+    avg: $filtered.average($sum)
+    p95: $filtered.quantile($histogram, 0.95)
+    p99: $filtered.quantile($histogram, 0.99)
+
+
+dataSources:
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: broker-query
+    title: Broker Queries
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $nodeType == broker and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["dataSource", "type", "host"]
+
+    dimensions: &queryDimensions
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+
+      - { name: "dataSource", title: "Data Source" }
+      - { name: "type", title: "Type" }
+      - { name: "interval", title: "Interval" }
+      - { name: "duration", title: "Duration" }
+      - { name: "hasFilters", title: "Has Filters", type: "BOOLEAN" }
+      - { name: "context", title: "Context" }
+      - { name: "remoteAddress", title: "Remote Address" }
+      - { name: "id", title: "ID" }
+      - { name: "dimension", title: "Dimension" }
+      - { name: "numDimensions", title: "Num Dimensions" }
+      - { name: "numMetrics", title: "Num Metrics" }
+      - { name: "numComplexMetrics", title: "Num Complex Metrics" }
+      - { name: "threshold", title: "Threshold" }
+
+    longForm:
+      <<: *longFormCommon
+      titleNameTrim: query_
+      values:
+        - { value: 'query/time', aggregates: ['cnt', 'avg', 'p95', 'p99'] }
+        - { value: 'query/cpu/time', aggregates: ['avg'] }
+        - { value: 'query/node/time', aggregates: ['cnt', 'avg'] }
+        - { value: 'query/node/ttfb', aggregates: ['avg'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: compute-query
+    title: Compute Queries
+
+    subsetFilter: >
+      $cluster == "demo" and
+      ($nodeType == historical or $nodeType == realtime) and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["dataSource", "type", "host"]
+
+    dimensions: *queryDimensions
+
+    longForm: &queryComputeLongForm
+      <<: *longFormCommon
+      titleNameTrim: query_
+      values:
+        - { value: 'query/time', aggregates: ['cnt', 'avg', 'p95', 'p99'] }
+        - { value: 'query/wait/time', aggregates: ['avg', 'p95', 'p99'] }
+        - { value: 'query/bytes', aggregates: ['avg', 'p95', 'p99'] }
+        - { value: 'query/cpu/time', aggregates: ['avg', 'p95', 'p99'] }
+        - { value: 'query/partial/time', aggregates: ['avg', 'p95', 'p99'] }
+        - { value: 'query/segment/time', aggregates: ['avg', 'p95', 'p99'] }
+        - { value: 'query/segmentAndCache/time', aggregates: ['avg', 'p95', 'p99'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: historical-query
+    title: Historical Queries
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $nodeType == historical and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["dataSource", "type", "host"]
+
+    dimensions: *queryDimensions
+
+    longForm: *queryComputeLongForm
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: realtime-query
+    title: Realtime Queries
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $nodeType == realtime and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["dataSource", "type", "host"]
+
+    dimensions: *queryDimensions
+
+    longForm: *queryComputeLongForm
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: ingestion
+    title: Ingestion
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["dataSource", "host"]
+
+    options:
+      defaultSplitDimension: time
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+      - { name: "dataSource", title: "Data Source" }
+      - { name: "host", title: "Host" }
+
+    longForm:
+      <<: *longFormCommon
+      titleNameTrim: ingest_
+      values:
+        - { value: 'ingest/events/processed', aggregates: ['sum'] }
+        - { value: 'ingest/events/unparseable', aggregates: ['sum'] }
+        - { value: 'ingest/events/thrownAway', aggregates: ['sum'] }
+        - { value: 'ingest/rows/output', aggregates: ['sum'] }
+        - { value: 'ingest/persists/count', aggregates: ['sum'] }
+        - { value: 'ingest/persists/time', aggregates: ['sum'] }
+        - { value: 'ingest/persists/backPressure', aggregates: ['sum'] }
+        - { value: 'ingest/persists/failed', aggregates: ['sum'] }
+        - { value: 'ingest/handoff/failed', aggregates: ['sum'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: jvm-gc
+    title: JVM Grabage Collection
+
+    subsetFilter: >
+      $cluster == "demo"
+
+    defaultPinnedDimensions: ["host", "nodeType"]
+
+    options:
+      defaultSplitDimension: time
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+
+      - { name: "gcName", title: "Gc Name" }
+
+    longForm:
+      <<: *longFormCommon
+      titleNameTrim: jvm_gc_
+      values:
+        - { value: 'jvm/gc/time', aggregates: ['sum'] }
+        - { value: 'jvm/gc/count', aggregates: ['sum'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: jvm-mem-heap
+    title: JVM Heap Memory
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $memKind == "heap"
+
+    defaultPinnedDimensions: ["host", "nodeType"]
+
+    options:
+      defaultSplitDimension: time
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+
+    longForm:
+      <<: *longFormCommon
+      titleNameTrim: jvm_
+      values:
+        - { value: 'jvm/mem/max', aggregates: ['avg'] }
+        - { value: 'jvm/mem/used', aggregates: ['avg'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: jvm-mem-nonheap
+    title: JVM Non-Heap Memory
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $memKind == "nonheap"
+
+    defaultPinnedDimensions: ["host", "nodeType"]
+
+    options:
+      defaultSplitDimension: time
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+
+    longForm:
+      <<: *longFormCommon
+      titleNameTrim: jvm_
+      values:
+        - { value: 'jvm/mem/used', aggregates: ['avg'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: all
+    title: All Metrics
+
+    subsetFilter: >
+      $cluster == "demo" and
+      $type != timeBoundary
+
+    defaultPinnedDimensions: ["metric", "type"]
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+
+      - { name: "dataSource", title: "Data Source" }
+      - { name: "type", title: "Type" }
+      - { name: "interval", title: "Interval" }
+      - { name: "hasFilters", title: "Has Filters" }
+      - { name: "duration", title: "Duration" }
+      - { name: "server", title: "Server" }
+      - { name: "dimension", title: "Dimension" }
+      - { name: "numDimensions", title: "Num Dimensions" }
+      - { name: "numMetrics", title: "Num Metrics" }
+      - { name: "numComplexMetrics", title: "Num Complex Metrics" }
+      - { name: "threshold", title: "Threshold" }
+      - { name: "id", title: "ID" }
+      - { name: "remoteAddress", title: "Remote Address" }
+      - { name: "memKind", title: "Mem Kind" }
+      - { name: "taskType", title: "Task Type" }
+      - { name: "tier", title: "Tier" }
+      - { name: "segment", title: "Segment" }
+      - { name: "context", title: "Context" }
+      - { name: "taskStatus", title: "Task Status" }
+      - { name: "gcName", title: "Gc Name" }
+
+    longForm:
+      <<: *longFormCommon
+      addSubsetFilter: false # since we are picking them all anyway
+      values:
+        - { value: 'ingest/events/processed', aggregates: ['sum'] }
+        - { value: 'ingest/events/thrownAway', aggregates: ['sum'] }
+        - { value: 'ingest/events/unparseable', aggregates: ['sum'] }
+        - { value: 'ingest/handoff/count', aggregates: ['sum'] }
+        - { value: 'ingest/handoff/failed', aggregates: ['sum'] }
+        - { value: 'ingest/merge/cpu', aggregates: ['sum'] }
+        - { value: 'ingest/merge/time', aggregates: ['sum'] }
+        - { value: 'ingest/persists/backPressure', aggregates: ['sum'] }
+        - { value: 'ingest/persists/count', aggregates: ['sum'] }
+        - { value: 'ingest/persists/cpu', aggregates: ['sum'] }
+        - { value: 'ingest/persists/failed', aggregates: ['sum'] }
+        - { value: 'ingest/persists/time', aggregates: ['sum'] }
+        - { value: 'ingest/rows/output', aggregates: ['sum'] }
+        - { value: 'jvm/gc/time', aggregates: ['sum'] }
+        - { value: 'jvm/gc/count', aggregates: ['sum'] }
+        - { value: 'jvm/mem/max', aggregates: ['avg'] }
+        - { value: 'jvm/mem/used', aggregates: ['avg'] }
+        - { value: 'namespace/count', aggregates: ['avg'] }
+        - { value: 'namespace/deltaTasksStarted', aggregates: ['avg'] }
+        - { value: 'namespace/size', aggregates: ['avg'] }
+        - { value: 'query/bytes', aggregates: ['avg'] }
+        - { value: 'query/cpu/time', aggregates: ['avg'] }
+        - { value: 'query/node/bytes', aggregates: ['avg'] }
+        - { value: 'query/node/time', aggregates: ['avg'] }
+        - { value: 'query/node/ttfb', aggregates: ['avg'] }
+        - { value: 'query/partial/time', aggregates: ['avg'] }
+        - { value: 'query/segment/time', aggregates: ['avg'] }
+        - { value: 'query/segmentAndCache/time', aggregates: ['avg'] }
+        - { value: 'query/time', aggregates: ['avg'] }
+        - { value: 'query/wait/time', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/averageBytes', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/errors', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/evictions', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/hitRate', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/hits', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/misses', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/numEntries', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/sizeBytes', aggregates: ['avg'] }
+        - { value: 'query/cache/delta/timeouts', aggregates: ['avg'] }
+        - { value: 'query/cache/total/averageBytes', aggregates: ['avg'] }
+        - { value: 'query/cache/total/errors', aggregates: ['avg'] }
+        - { value: 'query/cache/total/evictions', aggregates: ['avg'] }
+        - { value: 'query/cache/total/hitRate', aggregates: ['avg'] }
+        - { value: 'query/cache/total/hits', aggregates: ['avg'] }
+        - { value: 'query/cache/total/misses', aggregates: ['avg'] }
+        - { value: 'query/cache/total/numEntries', aggregates: ['avg'] }
+        - { value: 'query/cache/total/sizeBytes', aggregates: ['avg'] }
+        - { value: 'query/cache/total/timeouts', aggregates: ['avg'] }
+        - { value: 'segment/added/bytes', aggregates: ['avg'] }
+        - { value: 'segment/assigned/count', aggregates: ['avg'] }
+        - { value: 'segment/count', aggregates: ['avg'] }
+        - { value: 'segment/dropQueue/count', aggregates: ['avg'] }
+        - { value: 'segment/dropped/count', aggregates: ['avg'] }
+        - { value: 'segment/loadQueue/count', aggregates: ['avg'] }
+        - { value: 'segment/loadQueue/failed', aggregates: ['avg'] }
+        - { value: 'segment/loadQueue/size', aggregates: ['avg'] }
+        - { value: 'segment/moved/count', aggregates: ['avg'] }
+        - { value: 'segment/overShadowed/count', aggregates: ['avg'] }
+        - { value: 'segment/scan/pending', aggregates: ['avg'] }
+        - { value: 'segment/size', aggregates: ['avg'] }
+        - { value: 'segment/txn/failure', aggregates: ['avg'] }
+        - { value: 'segment/txn/success', aggregates: ['avg'] }
+        - { value: 'segment/unneeded/count', aggregates: ['avg'] }
+        - { value: 'task/interrupt/count', aggregates: ['avg'] }
+        - { value: 'task/interrupt/elapsed', aggregates: ['avg'] }
+        - { value: 'task/run/time', aggregates: ['avg'] }
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: alerts
+    title: Alerts
+    source: alerts-int
+
+    defaultSortMeasure: count
+
+    defaultPinnedDimensions: []
+
+    dimensions:
+      - { name: "host", title: "Host" }
+      - { name: "cluster", title: "Cluster" }
+      - { name: "nodeType", title: "Node Type" }
+      - { name: "service", title: "Service" }
+      - { name: "severity" }
+      - { name: "description" }
+
+    measures:
+      - name: count
+        title: Count
+        expression: $main.sum($count)
+
+
+  - <<: *dataSourceCommon #------------------------------------------------------------------------
+    name: raw
+    title: Raw Metrics
+
+    subsetFilter: >
+      $cluster == "demo"
+
+    defaultSortMeasure: count
+
+    defaultPinnedDimensions: ["metric", "type"]
+
+    dimensions:
+      - { name: "time", title: "Time", kind: "time" }
+      - { name: "metric", title: "Metric" }
+      - { name: "host", title: "Host" }
+      - { name: "service", title: "Service" }
+      - { name: "nodeType", title: "Node Type" }
+
+      - { name: "dataSource", title: "Data Source" }
+      - { name: "type", title: "Type" }
+      - { name: "interval", title: "Interval" }
+      - { name: "hasFilters", title: "Has Filters" }
+      - { name: "duration", title: "Duration" }
+      - { name: "server", title: "Server" }
+      - { name: "numMetrics", title: "Num Metrics" }
+      - { name: "numComplexMetrics", title: "Num Complex Metrics" }
+      - { name: "numDimensions", title: "Num Dimensions" }
+      - { name: "dimension", title: "Dimension" }
+      - { name: "threshold", title: "Threshold" }
+      - { name: "id", title: "ID" }
+      - { name: "remoteAddress", title: "Remote Address" }
+      - { name: "memKind", title: "Mem Kind" }
+      - { name: "taskType", title: "Task Type" }
+      - { name: "tier", title: "Tier" }
+      - { name: "segment", title: "Segment" }
+      - { name: "context", title: "Context" }
+      - { name: "taskStatus", title: "Task Status" }
+      - { name: "gcName", title: "Gc Name" }
+
+    measures:
+      - name: count
+        title: Count
+        expression: $main.count()
+
+      - name: avg
+        title: Average
+        expression: $main.average($sum)
+
+      - name: sum
+        title: Sum
+        expression: $main.sum($sum)
+
+      - name: min
+        title: Min
+        expression: $main.min($min)
+
+      - name: max
+        title: Max
+        expression: $main.max($max)
+
+      - name: p95
+        title: 95th Percentile
+        expression: $main.quantile($histogram, 0.95)
+
+      - name: p99
+        title: 99th Percentile
+        expression: $main.quantile($histogram, 0.99)
+
+
+
+_splitsTime5M: &splitsTime5M
+  splits: { expression: '$time', bucketAction: { action: timeBucket, duration: PT5M, timezone: 'Etc/UTC' } }
+
+linkViewConfig:
+  title: Imply Clarity
+  linkItems:
+
+    # ------------------------------------ Broker Queries ------------------------------------
+    - name: broker-overview
+      title: Broker Overview
+      description: The overview of the queries that are made to the cluster over the past day
+      group: Broker Queries
+      dataSource: broker-query
+      essence: &queryOverviewEssence
+        selectedMeasures: ["avg_query_time", "p95_query_time", "p99_query_time", "cnt_query_time"]
+        pinnedDimensions: ["dataSource", "type", "host"]
+
+    - name: broker-by-time
+      title: Broker Queries
+      description: The queries that are made to the cluster over the past day by time (5 minutes)
+      group: Broker Queries
+      dataSource: broker-query
+      essence: &queryByTimeEssence
+        <<: *splitsTime5M
+        selectedMeasures: ["avg_query_time", "p95_query_time", "p99_query_time", "cnt_query_time"]
+        pinnedDimensions: ["dataSource", "type", "host"]
+
+
+    # ------------------------------------ Compute Queries ------------------------------------
+    - name: compute-overview
+      title: Compute Overview
+      description: The queries that are made to the compute (historical + realtime) nodes over the past day
+      group: Compute Queries
+      dataSource: compute-query
+      essence: *queryOverviewEssence
+
+    - name: compute-by-time
+      title: Compute Queries
+      description: The queries that are made to the compute (historical + realtime) nodes over the past day by time (5 minutes)
+      group: Compute Queries
+      dataSource: historical-query
+      essence: *queryByTimeEssence
+
+
+    # ------------------------------------ Historical Queries ------------------------------------
+    - name: historical-overview
+      title: Historical Overview
+      description: The queries that are made to the historical nodes over the past day
+      group: Historical Queries
+      dataSource: historical-query
+      essence: *queryOverviewEssence
+
+    - name: historical-by-time
+      title: Historical Queries
+      description: The queries that are made to the historical nodes over the past day by time (5 minutes)
+      group: Historical Queries
+      dataSource: historical-query
+      essence: *queryByTimeEssence
+
+
+    # ------------------------------------ Realtime Queries ------------------------------------
+    - name: realtime-overview
+      title: Realtime Overview
+      description: The queries that are made to the realtime nodes over the past day
+      group: Realtime Queries
+      dataSource: realtime-query
+      essence: *queryOverviewEssence
+
+    - name: realtime-by-time
+      title: Realtime Queries
+      description: The queries that are made to the realtime nodes over the past day by time (5 minutes)
+      group: Realtime Queries
+      dataSource: realtime-query
+      essence: *queryByTimeEssence
+
+
+    # ------------------------------------ Ingestion ------------------------------------
+    - name: ingestion-overview
+      title: Ingestion Overview
+      description: The ingestion things that are happening now
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        selectedMeasures: ["sum_ingest_events_processed", "sum_ingest_events_unparseable", "sum_ingest_events_thrownAway", "sum_ingest_rows_output", "sum_ingest_persists_count", "sum_ingest_persists_time", "sum_ingest_persists_backPressure", "sum_ingest_persists_failed", "sum_ingest_handoff_failed"]
+        pinnedDimensions: ["dataSource", "host"]
+
+    - name: ingestion-events-by-datasource
+      title: Events By Data Source
+      description: Ingested events distributed across Data Sources
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        selectedMeasures: ["sum_ingest_events_processed", "sum_ingest_events_unparseable", "sum_ingest_events_thrownAway"]
+        splits: "dataSource"
+        pinnedDimensions: ["host"]
+
+    - name: ingestion-events-by-time
+      title: Events By Time
+      description: Ingested events distributed across by Time
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        <<: *splitsTime5M
+        selectedMeasures: ["sum_ingest_events_processed", "sum_ingest_events_unparseable", "sum_ingest_events_thrownAway"]
+        pinnedDimensions: ["host", "dataSource"]
+
+    - name: ingestion-events-by-host-time
+      title: Events By Host, Time
+      description: Ingested events distributed across by Time
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        selectedMeasures: ["sum_ingest_events_processed", "sum_ingest_events_unparseable", "sum_ingest_events_thrownAway"]
+        splits: ['host', { expression: '$time', bucketAction: { action: timeBucket, duration: PT5M, timezone: 'Etc/UTC' } }]
+        pinnedDimensions: ["dataSource"]
+
+    - name: ingestion-persists-by-datasource
+      title: Persists By Data Source
+      description: Ingestion persists distributed across Data Sources
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        selectedMeasures: ["sum_ingest_persists_count", "sum_ingest_persists_time", "sum_ingest_persists_backPressure", "sum_ingest_persists_failed"]
+        splits: "dataSource"
+        pinnedDimensions: ["host"]
+
+    - name: ingestion-persists-by-time
+      title: Persists By Time
+      description: Ingestion persists distributed across by Time
+      group: Ingestion
+      dataSource: ingestion
+      essence:
+        <<: *splitsTime5M
+        selectedMeasures: ["sum_ingest_persists_count", "sum_ingest_persists_time", "sum_ingest_persists_backPressure", "sum_ingest_persists_failed"]
+        pinnedDimensions: ["host", "dataSource"]
+
+
+    # ------------------------------------ JVM ------------------------------------
+    - name: jvm-gc
+      title: Garbage Collection
+      description: Time spent collecting garbage
+      group: JVM
+      dataSource: jvm-gc
+      essence:
+        <<: *splitsTime5M
+        selectedMeasures: ["sum_jvm_gc_time", "sum_jvm_gc_count"]
+        pinnedDimensions: ["dataSource", "host"]
+
+    - name: jvm-mem-heap
+      title: Heap Memory Usage
+      description: Heap memory based inspection
+      group: JVM
+      dataSource: jvm-mem-heap
+      essence:
+        <<: *splitsTime5M
+        selectedMeasures: ["avg_jvm_mem_max", "avg_jvm_mem_used"]
+        pinnedDimensions: ["host", "nodeType"]
+
+    - name: jvm-mem-nonheap
+      title: Non-Heap Memory Usage
+      description: Non-Heap memory based inspection
+      group: JVM
+      dataSource: jvm-mem-nonheap
+      essence:
+        <<: *splitsTime5M
+        selectedMeasures: ["avg_jvm_mem_used"]
+        pinnedDimensions: ["host", "nodeType"]
+
+
+    # ------------------------------------ Alerts ------------------------------------
+    - name: alerts
+      title: All Alerts
+      description: The alerts that happen
+      group: Alerts
+      dataSource: alerts
+      essence:
+        selectedMeasures: ["count"]
+        splits: 'description'
+        pinnedDimensions: ["service", "severity", "host"]

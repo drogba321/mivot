@@ -1,0 +1,1643 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for models/data-source/data-source.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">models/data-source/</a> data-source.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.86% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>218/331</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">57.21% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>123/215</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66.67% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>34/51</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">65.94% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>213/323</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264
+265
+266
+267
+268
+269
+270
+271
+272
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286
+287
+288
+289
+290
+291
+292
+293
+294
+295
+296
+297
+298
+299
+300
+301
+302
+303
+304
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315
+316
+317
+318
+319
+320
+321
+322
+323
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333
+334
+335
+336
+337
+338
+339
+340
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350
+351
+352
+353
+354
+355
+356
+357
+358
+359
+360
+361
+362
+363
+364
+365
+366
+367
+368
+369
+370
+371
+372
+373
+374
+375
+376
+377
+378
+379
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397
+398
+399
+400
+401
+402
+403
+404
+405
+406
+407
+408
+409
+410
+411
+412
+413
+414
+415
+416
+417
+418
+419
+420
+421
+422
+423
+424
+425
+426
+427
+428
+429
+430
+431
+432
+433
+434
+435
+436
+437
+438
+439
+440
+441
+442
+443
+444
+445
+446
+447
+448
+449
+450
+451
+452
+453
+454
+455
+456
+457
+458
+459
+460
+461
+462
+463
+464
+465
+466
+467
+468
+469
+470
+471
+472
+473
+474
+475
+476
+477
+478
+479
+480
+481
+482
+483
+484
+485
+486
+487
+488
+489
+490
+491
+492
+493
+494
+495
+496
+497
+498
+499
+500
+501
+502
+503
+504
+505
+506
+507
+508
+509
+510
+511
+512
+513
+514
+515
+516
+517
+518
+519
+520
+521
+522
+523
+524
+525
+526
+527</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">45×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">26×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">40×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">40×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">59×</span>
+<span class="cline-any cline-yes">64×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var Q = require('q');
+var immutable_1 = require('immutable');
+var immutable_class_1 = require('immutable-class');
+var chronoshift_1 = require('chronoshift');
+var plywood_1 = require('plywood');
+var general_1 = require('../../utils/general/general');
+var dimension_1 = require('../dimension/dimension');
+var measure_1 = require('../measure/measure');
+var filter_1 = require('../filter/filter');
+var max_time_1 = require('../max-time/max-time');
+var refresh_rule_1 = require('../refresh-rule/refresh-rule');
+<span class="fstat-no" title="function not covered" >function formatTimeDiff(diff) {</span>
+<span class="cstat-no" title="statement not covered" >    diff = Math.round(Math.abs(diff) / 1000); </span>// turn to seconds
+<span class="cstat-no" title="statement not covered" >    if (diff &lt; 60)</span>
+<span class="cstat-no" title="statement not covered" >        return 'less than 1 minute';</span>
+<span class="cstat-no" title="statement not covered" >    diff = Math.floor(diff / 60); </span>// turn to minutes
+<span class="cstat-no" title="statement not covered" >    if (diff === 1)</span>
+<span class="cstat-no" title="statement not covered" >        return '1 minute';</span>
+<span class="cstat-no" title="statement not covered" >    if (diff &lt; 60)</span>
+<span class="cstat-no" title="statement not covered" >        return diff + ' minutes';</span>
+<span class="cstat-no" title="statement not covered" >    diff = Math.floor(diff / 60); </span>// turn to hours
+<span class="cstat-no" title="statement not covered" >    if (diff === 1)</span>
+<span class="cstat-no" title="statement not covered" >        return '1 hour';</span>
+<span class="cstat-no" title="statement not covered" >    if (diff &lt;= 24)</span>
+<span class="cstat-no" title="statement not covered" >        return diff + ' hours';</span>
+<span class="cstat-no" title="statement not covered" >    diff = Math.floor(diff / 24); </span>// turn to days
+<span class="cstat-no" title="statement not covered" >    return diff + ' days';</span>
+}
+function makeUniqueDimensionList(dimensions) {
+    var seen = {};
+    return immutable_1.List(dimensions.filter(function (dimension) {
+        var dimensionName = dimension.name.toLowerCase();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (seen[dimensionName])
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        seen[dimensionName] = 1;
+        return true;
+    }));
+}
+function makeUniqueMeasureList(measures) {
+    var seen = {};
+    return immutable_1.List(measures.filter(function (measure) {
+        var measureName = measure.name.toLowerCase();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (seen[measureName])
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        seen[measureName] = 1;
+        return true;
+    }));
+}
+var check;
+var DataSource = (function () {
+    function DataSource(parameters) {
+        var name = parameters.name;
+        general_1.verifyUrlSafeName(name);
+        this.name = name;
+        this.title = parameters.title || general_1.makeTitle(name);
+        this.engine = parameters.engine;
+        this.source = parameters.source;
+        this.subsetFilter = parameters.subsetFilter;
+        this.options = parameters.options || <span class="branch-1 cbranch-no" title="branch not covered" >{};</span>
+        this.introspection = parameters.introspection || <span class="branch-1 cbranch-no" title="branch not covered" >DataSource.DEFAULT_INTROSPECTION;</span>
+        this.attributes = parameters.attributes || <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+        this.attributeOverrides = parameters.attributeOverrides || <span class="branch-1 cbranch-no" title="branch not covered" >[];</span>
+        this.dimensions = parameters.dimensions || <span class="branch-1 cbranch-no" title="branch not covered" >immutable_1.List([]);</span>
+        this.measures = parameters.measures || <span class="branch-1 cbranch-no" title="branch not covered" >immutable_1.List([]);</span>
+        this.timeAttribute = parameters.timeAttribute;
+        this.defaultTimezone = parameters.defaultTimezone;
+        this.defaultFilter = parameters.defaultFilter;
+        this.defaultDuration = parameters.defaultDuration;
+        this.defaultSortMeasure = parameters.defaultSortMeasure;
+        this.defaultPinnedDimensions = parameters.defaultPinnedDimensions;
+        this.refreshRule = parameters.refreshRule;
+        this.maxTime = parameters.maxTime;
+        this.executor = parameters.executor;
+        this._validateDefaults();
+    }
+    DataSource.isDataSource = function (candidate) {
+        return immutable_class_1.isInstanceOf(candidate, DataSource);
+    };
+    DataSource.updateMaxTime = <span class="fstat-no" title="function not covered" >function (dataSource) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!dataSource.shouldUpdateMaxTime())</span>
+<span class="cstat-no" title="statement not covered" >            return Q(dataSource);</span>
+<span class="cstat-no" title="statement not covered" >        if (dataSource.refreshRule.isRealtime()) {</span>
+<span class="cstat-no" title="statement not covered" >            return Q(dataSource.changeMaxTime(max_time_1.MaxTime.fromNow()));</span>
+        }
+<span class="cstat-no" title="statement not covered" >        var ex = plywood_1.ply().apply('maxTime', plywood_1.$('main').max(dataSource.timeAttribute));</span>
+<span class="cstat-no" title="statement not covered" >        return dataSource.executor(ex).then(<span class="fstat-no" title="function not covered" >function (dataset) {</span></span>
+<span class="cstat-no" title="statement not covered" >            var maxTimeDate = dataset.data[0]['maxTime'];</span>
+<span class="cstat-no" title="statement not covered" >            if (!isNaN(maxTimeDate)) {</span>
+<span class="cstat-no" title="statement not covered" >                return dataSource.changeMaxTime(max_time_1.MaxTime.fromDate(maxTimeDate));</span>
+            }
+<span class="cstat-no" title="statement not covered" >            return dataSource;</span>
+        });
+    };
+    DataSource.fromJS = function (parameters, executor) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (executor === void 0) { executor = null; }
+        var engine = parameters.engine;
+        var introspection = parameters.introspection;
+        var attributeOverrideJSs = parameters.attributeOverrides;
+        // Back compat.
+        var options = parameters.options || {};
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.skipIntrospection) {
+<span class="cstat-no" title="statement not covered" >            if (!introspection)</span>
+<span class="cstat-no" title="statement not covered" >                introspection = 'none';</span>
+<span class="cstat-no" title="statement not covered" >            delete options.skipIntrospection;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.disableAutofill) {
+<span class="cstat-no" title="statement not covered" >            if (!introspection)</span>
+<span class="cstat-no" title="statement not covered" >                introspection = 'no-autofill';</span>
+<span class="cstat-no" title="statement not covered" >            delete options.disableAutofill;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.attributeOverrides) {
+<span class="cstat-no" title="statement not covered" >            if (!attributeOverrideJSs)</span>
+<span class="cstat-no" title="statement not covered" >                attributeOverrideJSs = options.attributeOverrides;</span>
+<span class="cstat-no" title="statement not covered" >            delete options.attributeOverrides;</span>
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (options.defaultSplitDimension) {
+<span class="cstat-no" title="statement not covered" >            options.defaultSplits = options.defaultSplitDimension;</span>
+<span class="cstat-no" title="statement not covered" >            delete options.defaultSplitDimension;</span>
+        }
+        // End Back compat.
+        introspection = introspection || DataSource.DEFAULT_INTROSPECTION;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (DataSource.INTROSPECTION_VALUES.indexOf(introspection) === -1) {
+<span class="cstat-no" title="statement not covered" >            throw new Error("invalid introspection value " + introspection + ", must be one of " + DataSource.INTROSPECTION_VALUES.join(', '));</span>
+        }
+        var refreshRule = parameters.refreshRule ? refresh_rule_1.RefreshRule.fromJS(parameters.refreshRule) : refresh_rule_1.RefreshRule.query();
+        var maxTime = parameters.maxTime ? <span class="branch-0 cbranch-no" title="branch not covered" >max_time_1.MaxTime.fromJS(parameters.maxTime) </span>: null;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!maxTime &amp;&amp; refreshRule.isRealtime()) {
+<span class="cstat-no" title="statement not covered" >            maxTime = max_time_1.MaxTime.fromNow();</span>
+        }
+        var timeAttributeName = parameters.timeAttribute;
+        if (engine === 'druid' &amp;&amp; !timeAttributeName) {
+            timeAttributeName = '__time';
+        }
+        var timeAttribute = timeAttributeName ? plywood_1.$(timeAttributeName) : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
+        var attributeOverrides = plywood_1.AttributeInfo.fromJSs(attributeOverrideJSs || []);
+        var attributes = plywood_1.AttributeInfo.fromJSs(parameters.attributes || []);
+        var dimensions = makeUniqueDimensionList((parameters.dimensions || []).map(function (d) { return dimension_1.Dimension.fromJS(d); }));
+        var measures = makeUniqueMeasureList((parameters.measures || []).map(function (m) { return measure_1.Measure.fromJS(m); }));
+        if (timeAttribute &amp;&amp; !dimension_1.Dimension.getDimensionByExpression(dimensions, timeAttribute)) {
+            dimensions = dimensions.unshift(new dimension_1.Dimension({
+                name: timeAttributeName,
+                expression: timeAttribute,
+                kind: 'time'
+            }));
+        }
+        var value = {
+            executor: null,
+            name: parameters.name,
+            title: parameters.title,
+            engine: engine,
+            source: parameters.source,
+            subsetFilter: parameters.subsetFilter ? <span class="branch-0 cbranch-no" title="branch not covered" >plywood_1.Expression.fromJSLoose(parameters.subsetFilter) </span>: null,
+            options: options,
+            introspection: introspection,
+            attributeOverrides: attributeOverrides,
+            attributes: attributes,
+            dimensions: dimensions,
+            measures: measures,
+            timeAttribute: timeAttribute,
+            defaultTimezone: parameters.defaultTimezone ? chronoshift_1.Timezone.fromJS(parameters.defaultTimezone) : DataSource.DEFAULT_TIMEZONE,
+            defaultFilter: parameters.defaultFilter ? filter_1.Filter.fromJS(parameters.defaultFilter) : filter_1.Filter.EMPTY,
+            defaultDuration: parameters.defaultDuration ? chronoshift_1.Duration.fromJS(parameters.defaultDuration) : DataSource.DEFAULT_DURATION,
+            defaultSortMeasure: parameters.defaultSortMeasure || (measures.size ? measures.first().name : null),
+            defaultPinnedDimensions: immutable_1.OrderedSet(parameters.defaultPinnedDimensions || []),
+            refreshRule: refreshRule,
+            maxTime: maxTime
+        };
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (executor) {
+<span class="cstat-no" title="statement not covered" >            value.executor = executor;</span>
+        }
+        return new DataSource(value);
+    };
+    DataSource.prototype.valueOf = function () {
+        var value = {
+            name: this.name,
+            title: this.title,
+            engine: this.engine,
+            source: this.source,
+            subsetFilter: this.subsetFilter,
+            options: this.options,
+            introspection: this.introspection,
+            attributeOverrides: this.attributeOverrides,
+            attributes: this.attributes,
+            dimensions: this.dimensions,
+            measures: this.measures,
+            timeAttribute: this.timeAttribute,
+            defaultTimezone: this.defaultTimezone,
+            defaultFilter: this.defaultFilter,
+            defaultDuration: this.defaultDuration,
+            defaultSortMeasure: this.defaultSortMeasure,
+            defaultPinnedDimensions: this.defaultPinnedDimensions,
+            refreshRule: this.refreshRule,
+            maxTime: this.maxTime
+        };
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.executor) {
+<span class="cstat-no" title="statement not covered" >            value.executor = this.executor;</span>
+        }
+        return value;
+    };
+    DataSource.prototype.toJS = function () {
+        var js = {
+            name: this.name,
+            title: this.title,
+            engine: this.engine,
+            source: this.source,
+            subsetFilter: this.subsetFilter ? <span class="branch-0 cbranch-no" title="branch not covered" >this.subsetFilter.toJS() </span>: null,
+            introspection: this.introspection,
+            dimensions: this.dimensions.toArray().map(function (dimension) { return dimension.toJS(); }),
+            measures: this.measures.toArray().map(function (measure) { return measure.toJS(); }),
+            defaultTimezone: this.defaultTimezone.toJS(),
+            defaultFilter: this.defaultFilter.toJS(),
+            defaultDuration: this.defaultDuration.toJS(),
+            defaultSortMeasure: this.defaultSortMeasure,
+            defaultPinnedDimensions: this.defaultPinnedDimensions.toArray(),
+            refreshRule: this.refreshRule.toJS()
+        };
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (this.timeAttribute)
+            js.timeAttribute = this.timeAttribute.name;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.attributeOverrides.length)
+<span class="cstat-no" title="statement not covered" >            js.attributeOverrides = plywood_1.AttributeInfo.toJSs(this.attributeOverrides);</span>
+        if (this.attributes.length)
+            js.attributes = plywood_1.AttributeInfo.toJSs(this.attributes);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (Object.keys(this.options).length)
+<span class="cstat-no" title="statement not covered" >            js.options = this.options;</span>
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.maxTime)
+<span class="cstat-no" title="statement not covered" >            js.maxTime = this.maxTime.toJS();</span>
+        return js;
+    };
+    DataSource.prototype.toJSON = function () {
+        return this.toJS();
+    };
+    DataSource.prototype.toString = function () {
+        return "[DataSource: " + this.name + "]";
+    };
+    DataSource.prototype.equals = function (other) {
+        return this.equalsWithoutMaxTime(other) &amp;&amp;
+            Boolean(this.maxTime) === Boolean(other.maxTime) &amp;&amp;
+            (!this.maxTime || <span class="branch-3 cbranch-no" title="branch not covered" >this.maxTime.equals(other.maxTime))</span>;
+    };
+    DataSource.prototype.equalsWithoutMaxTime = function (other) {
+        return DataSource.isDataSource(other) &amp;&amp;
+            this.name === other.name &amp;&amp;
+            this.title === other.title &amp;&amp;
+            this.engine === other.engine &amp;&amp;
+            this.source === other.source &amp;&amp;
+            Boolean(this.subsetFilter) === Boolean(other.subsetFilter) &amp;&amp;
+            (!this.subsetFilter || <span class="branch-7 cbranch-no" title="branch not covered" >this.subsetFilter.equals(other.subsetFilter))</span> &amp;&amp;
+            JSON.stringify(this.options) === JSON.stringify(other.options) &amp;&amp;
+            this.introspection === other.introspection &amp;&amp;
+            immutable_class_1.arraysEqual(this.attributeOverrides, other.attributeOverrides) &amp;&amp;
+            immutable_class_1.arraysEqual(this.attributes, other.attributes) &amp;&amp;
+            general_1.listsEqual(this.dimensions, other.dimensions) &amp;&amp;
+            general_1.listsEqual(this.measures, other.measures) &amp;&amp;
+            Boolean(this.timeAttribute) === Boolean(other.timeAttribute) &amp;&amp;
+            (!this.timeAttribute || this.timeAttribute.equals(other.timeAttribute)) &amp;&amp;
+            this.defaultTimezone.equals(other.defaultTimezone) &amp;&amp;
+            this.defaultFilter.equals(other.defaultFilter) &amp;&amp;
+            this.defaultDuration.equals(other.defaultDuration) &amp;&amp;
+            this.defaultSortMeasure === other.defaultSortMeasure &amp;&amp;
+            this.defaultPinnedDimensions.equals(other.defaultPinnedDimensions) &amp;&amp;
+            this.refreshRule.equals(other.refreshRule);
+    };
+    DataSource.prototype._validateDefaults = function () {
+        var _a = this, measures = _a.measures, defaultSortMeasure = _a.defaultSortMeasure;
+        if (defaultSortMeasure) {
+            if (!measures.find(function (measure) { return measure.name === defaultSortMeasure; })) {
+                throw new Error("can not find defaultSortMeasure '" + defaultSortMeasure + "' in data source '" + this.name + "'");
+            }
+        }
+    };
+    DataSource.prototype.getMainTypeContext = function () {
+        var attributes = this.attributes;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!attributes)
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        var datasetType = {};
+        for (var _i = 0, attributes_1 = attributes; _i &lt; attributes_1.length; _i++) {
+            var attribute = attributes_1[_i];
+            datasetType[attribute.name] = attribute;
+        }
+        return {
+            type: 'DATASET',
+            datasetType: datasetType
+        };
+    };
+    DataSource.prototype.getIssues = function () {
+        var _a = this, dimensions = _a.dimensions, measures = _a.measures;
+        var mainTypeContext = this.getMainTypeContext();
+        var issues = [];
+        dimensions.forEach(function (dimension) {
+            try {
+                dimension.expression.referenceCheckInTypeContext(mainTypeContext);
+            }
+            catch (e) {
+                issues.push("failed to validate dimension '" + dimension.name + "': " + e.message);
+            }
+        });
+        var measureTypeContext = {
+            type: 'DATASET',
+            datasetType: {
+                main: mainTypeContext
+            }
+        };
+        measures.forEach(function (measure) {
+            try {
+                measure.expression.referenceCheckInTypeContext(measureTypeContext);
+            }
+            catch (e) {
+                var message = e.message;
+                // If we get here it is possible that the user has misunderstood what the meaning of a measure is and have tried
+                // to do something like $volume / $volume. We detect this here by checking for a reference to $main
+                // If there is no main reference raise a more informative issue.
+                if (measure.expression.getFreeReferences().indexOf('main') === -1) {
+                    message = 'measure must contain a $main reference';
+                }
+                issues.push("failed to validate measure '" + measure.name + "': " + message);
+            }
+        });
+        return issues;
+    };
+    DataSource.prototype.attachExecutor = <span class="fstat-no" title="function not covered" >function (executor) {</span>
+<span class="cstat-no" title="statement not covered" >        var value = this.valueOf();</span>
+<span class="cstat-no" title="statement not covered" >        value.executor = executor;</span>
+<span class="cstat-no" title="statement not covered" >        return new DataSource(value);</span>
+    };
+    DataSource.prototype.toClientDataSource = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var value = this.valueOf();</span>
+        // Do not reveal the subset filter to the client
+<span class="cstat-no" title="statement not covered" >        value.subsetFilter = null;</span>
+        // No need for any introspection on the client
+<span class="cstat-no" title="statement not covered" >        value.introspection = 'none';</span>
+        // No point sending over the maxTime
+<span class="cstat-no" title="statement not covered" >        if (this.refreshRule.isRealtime()) {</span>
+<span class="cstat-no" title="statement not covered" >            value.maxTime = null;</span>
+        }
+        // No need for the overrides
+<span class="cstat-no" title="statement not covered" >        value.attributeOverrides = null;</span>
+<span class="cstat-no" title="statement not covered" >        return new DataSource(value);</span>
+    };
+    DataSource.prototype.isQueryable = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return Boolean(this.executor);</span>
+    };
+    DataSource.prototype.getMaxTimeDate = function () {
+        var refreshRule = this.refreshRule;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (refreshRule.isFixed())
+            return refreshRule.time;
+        // refreshRule is query or realtime
+<span class="cstat-no" title="statement not covered" >        var maxTime = this.maxTime;</span>
+<span class="cstat-no" title="statement not covered" >        if (!maxTime)</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+<span class="cstat-no" title="statement not covered" >        return chronoshift_1.second.ceil(maxTime.time, chronoshift_1.Timezone.UTC);</span>
+    };
+    DataSource.prototype.updatedText = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var refreshRule = this.refreshRule;</span>
+<span class="cstat-no" title="statement not covered" >        if (refreshRule.isRealtime()) {</span>
+<span class="cstat-no" title="statement not covered" >            return 'Updated: ~1 second ago';</span>
+        }
+        else <span class="cstat-no" title="statement not covered" >if (refreshRule.isFixed()) {</span>
+<span class="cstat-no" title="statement not covered" >            return "Fixed to: " + formatTimeDiff(Date.now() - refreshRule.time.valueOf());</span>
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            var maxTime = this.maxTime;</span>
+<span class="cstat-no" title="statement not covered" >            if (maxTime) {</span>
+<span class="cstat-no" title="statement not covered" >                return "Updated: " + formatTimeDiff(Date.now() - maxTime.time.valueOf()) + " ago";</span>
+            }
+            else {
+<span class="cstat-no" title="statement not covered" >                return null;</span>
+            }
+        }
+    };
+    DataSource.prototype.shouldUpdateMaxTime = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        if (!this.refreshRule.shouldUpdate(this.maxTime))</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+<span class="cstat-no" title="statement not covered" >        return Boolean(this.executor) || this.refreshRule.isRealtime();</span>
+    };
+    DataSource.prototype.getDimension = function (dimensionName) {
+        return dimension_1.Dimension.getDimension(this.dimensions, dimensionName);
+    };
+    DataSource.prototype.getDimensionByExpression = function (expression) {
+        return dimension_1.Dimension.getDimensionByExpression(this.dimensions, expression);
+    };
+    DataSource.prototype.getDimensionByKind = <span class="fstat-no" title="function not covered" >function (kind) {</span>
+<span class="cstat-no" title="statement not covered" >        return this.dimensions.filter(<span class="fstat-no" title="function not covered" >function (d) {</span> <span class="cstat-no" title="statement not covered" >return d.kind === kind; </span>});</span>
+    };
+    DataSource.prototype.getTimeDimension = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.getDimensionByExpression(this.timeAttribute);</span>
+    };
+    DataSource.prototype.isTimeAttribute = <span class="fstat-no" title="function not covered" >function (ex) {</span>
+<span class="cstat-no" title="statement not covered" >        return ex.equals(this.timeAttribute);</span>
+    };
+    DataSource.prototype.getMeasure = function (measureName) {
+        measureName = measureName.toLowerCase(); // Case insensitive
+        return this.measures.find(function (measure) { return measure.name.toLowerCase() === measureName; });
+    };
+    DataSource.prototype.getMeasureByExpression = function (expression) {
+        return this.measures.find(<span class="fstat-no" title="function not covered" >function (measure) {</span> <span class="cstat-no" title="statement not covered" >return measure.expression.equals(expression); </span>});
+    };
+    DataSource.prototype.changeDimensions = <span class="fstat-no" title="function not covered" >function (dimensions) {</span>
+<span class="cstat-no" title="statement not covered" >        var value = this.valueOf();</span>
+<span class="cstat-no" title="statement not covered" >        value.dimensions = dimensions;</span>
+<span class="cstat-no" title="statement not covered" >        return new DataSource(value);</span>
+    };
+    DataSource.prototype.rolledUp = function () {
+        return this.engine === 'druid';
+    };
+    DataSource.prototype.setAttributes = function (attributes) {
+        var _this = this;
+        var _a = this, introspection = _a.introspection, dimensions = _a.dimensions, measures = _a.measures;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (introspection === 'none')
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+        var autofillDimensions = introspection === 'autofill-dimensions-only' || introspection === 'autofill-all';
+        var autofillMeasures = introspection === 'autofill-measures-only' || introspection === 'autofill-all';
+        var $main = plywood_1.$('main');
+        for (var _i = 0, attributes_2 = attributes; _i &lt; attributes_2.length; _i++) {
+            var attribute = attributes_2[_i];
+            var name = attribute.name, type = attribute.type;
+            var expression;
+            switch (type) {
+                case 'TIME':
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (!autofillDimensions)
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+                    expression = plywood_1.$(name);
+                    <span class="missing-if-branch" title="else path not taken" >E</span>if (this.getDimensionByExpression(expression))
+                        continue;
+                    // Add to the start
+<span class="cstat-no" title="statement not covered" >                    dimensions = dimensions.unshift(new dimension_1.Dimension({</span>
+                        name: name,
+                        kind: 'time'
+                    }));
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'STRING':
+                    if (attribute.special === 'unique') {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (!autofillMeasures)
+<span class="cstat-no" title="statement not covered" >                            continue;</span>
+                        var newMeasures = measure_1.Measure.measuresFromAttributeInfo(attribute);
+                        newMeasures.forEach(function (newMeasure) {
+                            <span class="missing-if-branch" title="if path not taken" >I</span>if (_this.getMeasureByExpression(newMeasure.expression))
+<span class="cstat-no" title="statement not covered" >                                return;</span>
+                            measures = measures.push(newMeasure);
+                        });
+                    }
+                    else {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (!autofillDimensions)
+<span class="cstat-no" title="statement not covered" >                            continue;</span>
+                        expression = plywood_1.$(name);
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.getDimensionByExpression(expression))
+<span class="cstat-no" title="statement not covered" >                            continue;</span>
+                        dimensions = dimensions.push(new dimension_1.Dimension({
+                            name: name
+                        }));
+                    }
+                    break;
+<span class="branch-2 cbranch-no" title="branch not covered" >                case 'SET/STRING':</span>
+<span class="cstat-no" title="statement not covered" >                    if (!autofillDimensions)</span>
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+<span class="cstat-no" title="statement not covered" >                    expression = plywood_1.$(name);</span>
+<span class="cstat-no" title="statement not covered" >                    if (this.getDimensionByExpression(expression))</span>
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+<span class="cstat-no" title="statement not covered" >                    dimensions = dimensions.push(new dimension_1.Dimension({</span>
+                        name: name
+                    }));
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+<span class="branch-3 cbranch-no" title="branch not covered" >                case 'BOOLEAN':</span>
+<span class="cstat-no" title="statement not covered" >                    if (!autofillDimensions)</span>
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+<span class="cstat-no" title="statement not covered" >                    expression = plywood_1.$(name);</span>
+<span class="cstat-no" title="statement not covered" >                    if (this.getDimensionByExpression(expression))</span>
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+<span class="cstat-no" title="statement not covered" >                    dimensions = dimensions.push(new dimension_1.Dimension({</span>
+                        name: name,
+                        kind: 'boolean'
+                    }));
+<span class="cstat-no" title="statement not covered" >                    break;</span>
+                case 'NUMBER':
+                    <span class="missing-if-branch" title="if path not taken" >I</span>if (!autofillMeasures)
+<span class="cstat-no" title="statement not covered" >                        continue;</span>
+                    var newMeasures = measure_1.Measure.measuresFromAttributeInfo(attribute);
+                    newMeasures.forEach(function (newMeasure) {
+                        <span class="missing-if-branch" title="if path not taken" >I</span>if (_this.getMeasureByExpression(newMeasure.expression))
+<span class="cstat-no" title="statement not covered" >                            return;</span>
+                        measures = (name === 'count') ? <span class="branch-0 cbranch-no" title="branch not covered" >measures.unshift(newMeasure) </span>: measures.push(newMeasure);
+                    });
+                    break;
+<span class="branch-5 cbranch-no" title="branch not covered" >                default:</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error('unsupported type ' + type);</span>
+            }
+        }
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.rolledUp() &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!measures.find(<span class="fstat-no" title="function not covered" >function (m) {</span> <span class="cstat-no" title="statement not covered" >return m.name === 'count'; </span>}))</span> {
+<span class="cstat-no" title="statement not covered" >            measures = measures.unshift(new measure_1.Measure({</span>
+                name: 'count',
+                expression: $main.count()
+            }));
+        }
+        var value = this.valueOf();
+        value.introspection = 'no-autofill';
+        value.attributes = attributes;
+        value.dimensions = dimensions;
+        value.measures = measures;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (!value.defaultSortMeasure) {
+            value.defaultSortMeasure = measures.size ? measures.first().name : <span class="branch-1 cbranch-no" title="branch not covered" >null;</span>
+        }
+        // ToDo: remove this when Pivot can handle it
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!value.timeAttribute &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >dimensions.first().kind === 'time')</span> {
+<span class="cstat-no" title="statement not covered" >            value.timeAttribute = dimensions.first().expression;</span>
+        }
+        return new DataSource(value);
+    };
+    DataSource.prototype.changeMaxTime = <span class="fstat-no" title="function not covered" >function (maxTime) {</span>
+<span class="cstat-no" title="statement not covered" >        var value = this.valueOf();</span>
+<span class="cstat-no" title="statement not covered" >        value.maxTime = maxTime;</span>
+<span class="cstat-no" title="statement not covered" >        return new DataSource(value);</span>
+    };
+    DataSource.prototype.getDefaultSortAction = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return new plywood_1.SortAction({</span>
+            expression: plywood_1.$(this.defaultSortMeasure),
+            direction: plywood_1.SortAction.DESCENDING
+        });
+    };
+    DataSource.DEFAULT_INTROSPECTION = 'autofill-all';
+    DataSource.INTROSPECTION_VALUES = ['none', 'no-autofill', 'autofill-dimensions-only', 'autofill-measures-only', 'autofill-all'];
+    DataSource.DEFAULT_TIMEZONE = chronoshift_1.Timezone.UTC;
+    DataSource.DEFAULT_DURATION = chronoshift_1.Duration.fromJS('P1D');
+    return DataSource;
+}());
+exports.DataSource = DataSource;
+check = DataSource;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 08 2016 17:01:59 GMT-0800 (PST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

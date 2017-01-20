@@ -1,0 +1,371 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for models/refresh-rule/refresh-rule.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../prettify.css" />
+    <link rel="stylesheet" href="../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../index.html">all files</a> / <a href="index.html">models/refresh-rule/</a> refresh-rule.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.85% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>56/66</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">79.41% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>27/34</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">85.71% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>12/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">84.85% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>56/66</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">46×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">72×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">39×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">65×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var immutable_class_1 = require('immutable-class');
+var chronoshift_1 = require('chronoshift');
+var check;
+var RefreshRule = (function () {
+    function RefreshRule(parameters) {
+        var rule = parameters.rule;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (rule !== RefreshRule.FIXED &amp;&amp; rule !== RefreshRule.QUERY &amp;&amp; rule !== RefreshRule.REALTIME) {
+<span class="cstat-no" title="statement not covered" >            throw new Error("rule must be on of: " + RefreshRule.FIXED + ", " + RefreshRule.QUERY + ", or " + RefreshRule.REALTIME);</span>
+        }
+        this.rule = rule;
+        this.refresh = parameters.refresh;
+        if (this.rule !== RefreshRule.FIXED &amp;&amp; !this.refresh) {
+            this.refresh = RefreshRule.DEFAULT_QUERY_REFRESH;
+        }
+        this.time = parameters.time;
+    }
+    RefreshRule.isRefreshRule = function (candidate) {
+        return immutable_class_1.isInstanceOf(candidate, RefreshRule);
+    };
+    RefreshRule.query = function (refresh) {
+        return new RefreshRule({
+            rule: RefreshRule.QUERY,
+            refresh: refresh
+        });
+    };
+    RefreshRule.fromJS = function (parameters) {
+        var value = {
+            rule: parameters.rule
+        };
+        if (parameters.refresh) {
+            value.refresh = chronoshift_1.Duration.fromJS(parameters.refresh);
+        }
+        if (parameters.time) {
+            value.time = new Date(parameters.time);
+        }
+        return new RefreshRule(value);
+    };
+    RefreshRule.prototype.valueOf = function () {
+        var value = {
+            rule: this.rule
+        };
+        if (this.refresh) {
+            value.refresh = this.refresh;
+        }
+        if (this.time) {
+            value.time = this.time;
+        }
+        return value;
+    };
+    RefreshRule.prototype.toJS = function () {
+        var js = {
+            rule: this.rule
+        };
+        if (this.refresh) {
+            js.refresh = this.refresh.toJS();
+        }
+        if (this.time) {
+            js.time = this.time;
+        }
+        return js;
+    };
+    RefreshRule.prototype.toJSON = function () {
+        return this.toJS();
+    };
+    RefreshRule.prototype.toString = function () {
+        return "[RefreshRule: " + this.rule + "]";
+    };
+    RefreshRule.prototype.equals = function (other) {
+        return RefreshRule.isRefreshRule(other) &amp;&amp;
+            this.rule === other.rule &amp;&amp;
+            Boolean(this.refresh) === Boolean(other.refresh) &amp;&amp;
+            (!this.refresh || this.refresh.equals(other.refresh)) &amp;&amp;
+            (!this.time || this.time.valueOf() === other.time.valueOf());
+    };
+    RefreshRule.prototype.isFixed = function () {
+        return this.rule === RefreshRule.FIXED;
+    };
+    RefreshRule.prototype.isQuery = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        return this.rule === RefreshRule.QUERY;</span>
+    };
+    RefreshRule.prototype.isRealtime = function () {
+        return this.rule === RefreshRule.REALTIME;
+    };
+    RefreshRule.prototype.shouldUpdate = <span class="fstat-no" title="function not covered" >function (maxTime) {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.isFixed())</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+<span class="cstat-no" title="statement not covered" >        if (!maxTime)</span>
+<span class="cstat-no" title="statement not covered" >            return true;</span>
+<span class="cstat-no" title="statement not covered" >        var refresh = this.refresh;</span>
+<span class="cstat-no" title="statement not covered" >        if (!refresh)</span>
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+<span class="cstat-no" title="statement not covered" >        return Date.now() - maxTime.updated.valueOf() &gt; refresh.getCanonicalLength();</span>
+    };
+    RefreshRule.FIXED = 'fixed';
+    RefreshRule.QUERY = 'query';
+    RefreshRule.REALTIME = 'realtime';
+    RefreshRule.DEFAULT_QUERY_REFRESH = chronoshift_1.Duration.fromJS('PT1M');
+    return RefreshRule;
+}());
+exports.RefreshRule = RefreshRule;
+check = RefreshRule;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Tue Mar 08 2016 17:01:59 GMT-0800 (PST)
+</div>
+</div>
+<script src="../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../sorter.js"></script>
+</body>
+</html>

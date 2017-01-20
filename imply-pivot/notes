@@ -1,0 +1,28 @@
+BOOLEAN should be ordinal
+if a dimension is ordinal then bar chart is the best
+
+In case of switch to bar chart it should auto order by the dimension iff the dimension is ordinal
+
+Single measure drives pinboard
+
+Picking a non additive measure in a visualization that needs an additive measure (like Treemap) will cause the vis to go to the fallback screen
+
+Need to change logic in time series resizing to add maxHeight to chart
+
+
+Roadmap:
+- Custom time split granularity
+
+
+ToDos:
+- BUG: try to pin time dimension
+- Add min granularity to dataSource
+- Make PivotConfig object
+- Add tracking hooks
+- Colors should not store limit
+
+
+Questions:
+- If filtering on colors=(limit 5 sorted on Revenue) filter menu is sorted on count, what to do?
+  Suggestion: If filter menu has colors it is sorted by colors measure.
+

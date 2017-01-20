@@ -1,0 +1,335 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for common/models/sort-on/sort-on.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">common/models/sort-on/</a> sort-on.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.77% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>45/61</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">50% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>10/20</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">55.56% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>10/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">73.77% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>45/61</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-yes">19×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">30×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var immutable_class_1 = require('immutable-class');
+var plywood_1 = require('plywood');
+var dimension_1 = require('../dimension/dimension');
+var measure_1 = require('../measure/measure');
+var check;
+var SortOn = (function () {
+    function SortOn(parameters) {
+        this.dimension = parameters.dimension;
+        this.measure = parameters.measure;
+    }
+    SortOn.isSortOn = function (candidate) {
+        return immutable_class_1.isInstanceOf(candidate, SortOn);
+    };
+    SortOn.equal = <span class="fstat-no" title="function not covered" >function (s1, s2) {</span>
+<span class="cstat-no" title="statement not covered" >        return s1 === s2 || s1.equals(s2);</span>
+    };
+    SortOn.getName = <span class="fstat-no" title="function not covered" >function (s) {</span>
+<span class="cstat-no" title="statement not covered" >        return s.toName();</span>
+    };
+    SortOn.getTitle = <span class="fstat-no" title="function not covered" >function (s) {</span>
+<span class="cstat-no" title="statement not covered" >        return s.getTitle();</span>
+    };
+    SortOn.fromDimension = <span class="fstat-no" title="function not covered" >function (dimension) {</span>
+<span class="cstat-no" title="statement not covered" >        return new SortOn({ dimension: dimension });</span>
+    };
+    SortOn.fromMeasure = <span class="fstat-no" title="function not covered" >function (measure) {</span>
+<span class="cstat-no" title="statement not covered" >        return new SortOn({ measure: measure });</span>
+    };
+    SortOn.fromSortAction = <span class="fstat-no" title="function not covered" >function (sortAction, dataSource, fallbackDimension) {</span>
+<span class="cstat-no" title="statement not covered" >        if (!sortAction)</span>
+<span class="cstat-no" title="statement not covered" >            return SortOn.fromDimension(fallbackDimension);</span>
+<span class="cstat-no" title="statement not covered" >        var sortOnName = sortAction.expression.name;</span>
+<span class="cstat-no" title="statement not covered" >        var measure = dataSource.getMeasure(sortOnName);</span>
+<span class="cstat-no" title="statement not covered" >        if (measure)</span>
+<span class="cstat-no" title="statement not covered" >            return SortOn.fromMeasure(measure);</span>
+<span class="cstat-no" title="statement not covered" >        return SortOn.fromDimension(fallbackDimension);</span>
+    };
+    SortOn.fromJS = function (parameters) {
+        var value = {};
+        if (parameters.dimension) {
+            value.dimension = dimension_1.Dimension.fromJS(parameters.dimension);
+        }
+        else {
+            value.measure = measure_1.Measure.fromJS(parameters.measure);
+        }
+        return new SortOn(value);
+    };
+    SortOn.prototype.valueOf = function () {
+        return {
+            dimension: this.dimension,
+            measure: this.measure
+        };
+    };
+    SortOn.prototype.toJS = function () {
+        var js = {};
+        if (this.dimension) {
+            js.dimension = this.dimension.toJS();
+        }
+        else {
+            js.measure = this.measure.toJS();
+        }
+        return js;
+    };
+    SortOn.prototype.toJSON = function () {
+        return this.toJS();
+    };
+    SortOn.prototype.toString = function () {
+        return "[SortOn: " + this.toName() + "]";
+    };
+    SortOn.prototype.equals = function (other) {
+        return SortOn.isSortOn(other) &amp;&amp;
+            (this.dimension ? this.dimension.equals(other.dimension) : this.measure.equals(other.measure));
+    };
+    SortOn.prototype.toName = function () {
+        var measure = this.measure;
+        return measure ? measure.name : this.dimension.name;
+    };
+    SortOn.prototype.getTitle = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var measure = this.measure;</span>
+<span class="cstat-no" title="statement not covered" >        return measure ? measure.title : this.dimension.title;</span>
+    };
+    SortOn.prototype.getExpression = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        var measure = this.measure;</span>
+<span class="cstat-no" title="statement not covered" >        return plywood_1.$(measure ? measure.name : 'SEGMENT');</span>
+    };
+    return SortOn;
+}());
+exports.SortOn = SortOn;
+check = SortOn;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Apr 28 2016 10:31:22 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

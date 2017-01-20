@@ -1,0 +1,497 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for common/models/filter-clause/filter-clause.js</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">common/models/filter-clause/</a> filter-clause.js
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.65% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>81/98</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">66% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>33/50</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">94.44% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>17/18</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">82.65% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>81/98</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">82×</span>
+<span class="cline-any cline-yes">82×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">82×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-yes">33×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">82×</span>
+<span class="cline-any cline-yes">82×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-yes">115×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">90×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">18×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">60×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">42×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">9×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">6×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">12×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">81×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">61×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">"use strict";
+var immutable_class_1 = require('immutable-class');
+var chronoshift_1 = require('chronoshift');
+var plywood_1 = require('plywood');
+function isLiteral(ex) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (ex instanceof plywood_1.LiteralExpression)
+        return plywood_1.TimeRange.isTimeRange(ex.value) || plywood_1.Set.isSet(ex.value);
+<span class="cstat-no" title="statement not covered" >    return false;</span>
+}
+function isRelative(ex) {
+    if (ex instanceof plywood_1.ChainExpression) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (ex.type !== 'TIME_RANGE')
+<span class="cstat-no" title="statement not covered" >            return false;</span>
+        var expression = ex.expression;
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (expression instanceof plywood_1.RefExpression) {
+            return expression.name === FilterClause.NOW_REF_NAME || expression.name === FilterClause.MAX_TIME_REF_NAME;
+        }
+    }
+    return false;
+}
+var check;
+var FilterClause = (function () {
+    function FilterClause(parameters) {
+        this.expression = parameters.expression;
+        var selection = parameters.selection;
+        if (isRelative(selection)) {
+            this.relative = true;
+        }
+        else <span class="missing-if-branch" title="else path not taken" >E</span>if (isLiteral(selection)) {
+            this.relative = false;
+        }
+        else {
+<span class="cstat-no" title="statement not covered" >            throw new Error("invalid expression " + selection.toString());</span>
+        }
+        this.selection = selection;
+        this.exclude = parameters.exclude || false;
+    }
+    FilterClause.isFilterClause = function (candidate) {
+        return immutable_class_1.isInstanceOf(candidate, FilterClause);
+    };
+    FilterClause.evaluate = function (selection, now, maxTime, timezone) {
+        if (!selection)
+            return null;
+        var maxTimeMinuteTop = chronoshift_1.minute.shift(chronoshift_1.minute.floor(maxTime, timezone), timezone, 1);
+        var datum = {};
+        datum[FilterClause.NOW_REF_NAME] = now;
+        datum[FilterClause.MAX_TIME_REF_NAME] = maxTimeMinuteTop;
+        return selection.defineEnvironment({ timezone: timezone }).getFn()(datum, {});
+    };
+    FilterClause.fromExpression = function (ex) {
+        var exclude = false;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (ex.lastAction() instanceof plywood_1.NotAction) {
+<span class="cstat-no" title="statement not covered" >            ex = ex.popAction();</span>
+<span class="cstat-no" title="statement not covered" >            exclude = true;</span>
+        }
+        var lastAction = ex.lastAction();
+        var dimExpression = ex.popAction();
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (lastAction instanceof plywood_1.InAction || lastAction instanceof plywood_1.OverlapAction) {
+            var selection = lastAction.expression;
+            <span class="missing-if-branch" title="if path not taken" >I</span>if (selection.type === 'SET/TIME_RANGE') {
+<span class="cstat-no" title="statement not covered" >                var literalSet = selection.getLiteralValue();</span>
+<span class="cstat-no" title="statement not covered" >                if (literalSet.size() &gt; 1)</span>
+<span class="cstat-no" title="statement not covered" >                    throw new Error('can not filter on multiple time range values');</span>
+<span class="cstat-no" title="statement not covered" >                selection = plywood_1.r(literalSet.elements[0]);</span>
+            }
+            return new FilterClause({
+                expression: dimExpression,
+                selection: selection,
+                exclude: exclude
+            });
+        }
+<span class="cstat-no" title="statement not covered" >        throw new Error("invalid expression " + ex.toString());</span>
+    };
+    FilterClause.fromJS = function (parameters) {
+        var value = {
+            expression: plywood_1.Expression.fromJS(parameters.expression),
+            selection: plywood_1.Expression.fromJS(parameters.selection),
+            exclude: Boolean(parameters.exclude)
+        };
+        return new FilterClause(value);
+    };
+    FilterClause.prototype.valueOf = function () {
+        return {
+            expression: this.expression,
+            selection: this.selection,
+            exclude: this.exclude
+        };
+    };
+    FilterClause.prototype.toJS = function () {
+        var js = {
+            expression: this.expression.toJS(),
+            selection: this.selection.toJS()
+        };
+        if (this.exclude)
+            js.exclude = true;
+        return js;
+    };
+    FilterClause.prototype.toJSON = function () {
+        return this.toJS();
+    };
+    FilterClause.prototype.toString = function () {
+        return "[FilterClause: " + this.expression.toString() + "]";
+    };
+    FilterClause.prototype.equals = function (other) {
+        return FilterClause.isFilterClause(other) &amp;&amp;
+            this.expression.equals(other.expression) &amp;&amp;
+            this.selection.equals(other.selection) &amp;&amp;
+            this.exclude === other.exclude;
+    };
+    FilterClause.prototype.toExpression = function () {
+        var _a = this, expression = _a.expression, selection = _a.selection;
+        var ex = (selection.type === 'TIME_RANGE') ? expression.in(selection) : expression.overlap(selection);
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.exclude)
+<span class="cstat-no" title="statement not covered" >            ex = ex.not();</span>
+        return ex;
+    };
+    FilterClause.prototype.getTimeRange = <span class="fstat-no" title="function not covered" >function () {</span>
+<span class="cstat-no" title="statement not covered" >        if (this.relative)</span>
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+<span class="cstat-no" title="statement not covered" >        var v = this.selection.getLiteralValue();</span>
+<span class="cstat-no" title="statement not covered" >        return plywood_1.TimeRange.isTimeRange(v) ? v : null;</span>
+    };
+    FilterClause.prototype.getLiteralSet = function () {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (this.relative)
+<span class="cstat-no" title="statement not covered" >            return null;</span>
+        var v = this.selection.getLiteralValue();
+        return plywood_1.TimeRange.isTimeRange(v) ? <span class="branch-0 cbranch-no" title="branch not covered" >plywood_1.Set.fromJS([v]) </span>: v;
+    };
+    FilterClause.prototype.changeSelection = function (selection) {
+        var value = this.valueOf();
+        value.selection = selection;
+        return new FilterClause(value);
+    };
+    FilterClause.prototype.evaluate = function (now, maxTime, timezone) {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!this.relative)
+<span class="cstat-no" title="statement not covered" >            return this;</span>
+        return this.changeSelection(plywood_1.r(FilterClause.evaluate(this.selection, now, maxTime, timezone)));
+    };
+    FilterClause.NOW_REF_NAME = 'n';
+    FilterClause.MAX_TIME_REF_NAME = 'm';
+    return FilterClause;
+}());
+exports.FilterClause = FilterClause;
+check = FilterClause;
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Thu Apr 28 2016 10:31:22 GMT-0700 (PDT)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>
